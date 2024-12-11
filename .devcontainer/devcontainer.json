@@ -4,7 +4,8 @@
 {
 	"name": "Node.js",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+	// https://mcr.microsoft.com/v2/devcontainers/javascript-node/tags/list
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:22",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},

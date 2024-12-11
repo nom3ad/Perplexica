@@ -1,2 +1,11 @@
 **/node_modules
-**/dist
+.git
+dist
+data
+uploads
+ui/.next
+*.log
+Dockerfile
+.dockerignore
+.config.toml
+.vscode

@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -8,17 +9,22 @@ const nextConfig = {
     ],
   },
   async rewrites() {
-    // Proxy to Backend
-    return [
-      {
-        source: '/ws',
-        destination: 'http://localhost:3001/ws' 
-      },
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:3001/api/:path*'
-      }
-    ]
+    if (process.env.NODE_ENV === 'development' || true) {
+      console.warn('Development Mode!!! Using proxy for /api and /ws routes');
+      // Proxy to Backend
+      return [
+        {
+          source: '/ws',
+          destination: 'http://localhost:3001/ws' 
+        },
+        {
+          source: '/api/:path*',
+          destination: 'http://localhost:3001/api/:path*'
+        }
+      ]
+    } 
+    console.error(`Mode: ${process.env.NODE_ENV}`); 
+    return [];
   }
 };
 

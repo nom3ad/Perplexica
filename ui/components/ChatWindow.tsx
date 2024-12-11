@@ -145,7 +145,6 @@ const useSocket = (
           }
         }
 
-        const wsURL = new URL(url);
         const searchParams = new URLSearchParams({});
 
         searchParams.append('chatModel', chatModel!);
@@ -165,9 +164,9 @@ const useSocket = (
         searchParams.append('embeddingModel', embeddingModel!);
         searchParams.append('embeddingModelProvider', embeddingModelProvider);
 
-        wsURL.search = searchParams.toString();
+        const wsURL = `${url}?${searchParams.toString()}`;
 
-        const ws = new WebSocket(wsURL.toString());
+        const ws = new WebSocket(wsURL);
 
         const timeoutId = setTimeout(() => {
           if (ws.readyState !== 1) {

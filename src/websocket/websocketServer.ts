@@ -8,7 +8,7 @@ export const initServer = (
   server: http.Server<typeof http.IncomingMessage, typeof http.ServerResponse>,
 ) => {
   const port = getPort();
-  const wss = new WebSocketServer({ server });
+  const wss = new WebSocketServer({ server, path: '/ws' });
 
   wss.on('connection', handleConnection);
 
